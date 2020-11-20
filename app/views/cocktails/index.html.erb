@@ -1,14 +1,31 @@
-<div class="container">
-<h1>Hello</h1>
-    <% @cocktails.each do |cocktail|  %>
-         <td><%= cocktail.name %></td>
-         <%= link_to 'voir', cocktail %>
-         <%#= link_to 'edit', edit_cocktail_path(@cocktail) %>
-         <%= link_to 'destroy', cocktail, method: :delete  %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1597683684712-9e4ecc69132a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);">
+    <div class="container">
+      <h1>Welcome in <strong>Brasil</strong></h1>
+    </div>
+  </div>
 
+<div class="row row-cols-2 row-cols-md-2">
+    <% @cocktails.each do |cocktail|  %>
+      <div class="col-6 col-md-3">
+        <td><%= cocktail.name %></td>
+        <%= link_to 'voir', cocktail %>
+        <%#= link_to 'edit', edit_cocktail_path(@cocktail) %>
+        <%= link_to 'destroy', cocktail, method: :delete, class:"btn btn-danger"  %>
+        <div class="card flex d-flex" style="width: 18rem;">
+          <div class="card-body">
+            <% if cocktail.photo.attachment %>
+              <%= cl_image_tag cocktail.photo.key, height: 150, width: 250, crop: :fill %>
+            <% else %>
+              <%= image_tag("home-page.jpeg",width: 250, height: 200, crop: :fill) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% end %>
+ </div>
     <div>
-         <%= link_to 'new', new_cocktail_path %>
+         <%= link_to 'new', new_cocktail_path, class:"btn btn-primary" %>
     </div>
 </div>
+
 
