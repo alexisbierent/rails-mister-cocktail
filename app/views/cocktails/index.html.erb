@@ -1,0 +1,12 @@
+<h1>Hello</h1>
+    <% @cocktails.each do |cocktail|  %>
+         <td><%= cocktail.name %></td>
+         <%= link_to 'voir', cocktail %>
+         <%#= link_to 'edit', edit_cocktail_path(@cocktail) %>
+         <%= link_to 'destroy', cocktail, method: :delete  %>
+
+    <% end %>
+    <div>
+         <%= link_to 'new', new_cocktail_path %>
+    </div>
+
